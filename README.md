@@ -1,6 +1,8 @@
 tree-sitter-elixir
 ================
 
+[![Build Status](https://travis-ci.org/jlgeering/tree-sitter-elixir.svg?branch=master)](https://travis-ci.org/jlgeering/tree-sitter-elixir)
+
 Elixir grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 #### References
