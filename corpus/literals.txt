@@ -1,0 +1,50 @@
+=======
+integer
+=======
+
+1234
+
+---
+
+(program (integer))
+
+=======================
+integer with underscore
+=======================
+
+1_234
+
+---
+
+(program (integer))
+
+==========================
+integer in binary notation
+==========================
+
+0b1_0
+
+---
+
+(program (integer))
+
+=========================
+integer in octal notation
+=========================
+
+0o1234567
+
+---
+
+(program (integer))
+
+===============================
+integer in hexadecimal notation
+===============================
+
+0xa_bcd_ef0_123_456_789
+0x1F
+
+---
+
+(program (integer) (integer))
