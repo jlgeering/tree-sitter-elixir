@@ -8,5 +8,9 @@
   "license": "MIT",
   "devDependencies": {
     "tree-sitter-cli": "^0.13.6"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
   }
 }
