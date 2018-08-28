@@ -7,28 +7,32 @@
 
 #define LANGUAGE_VERSION 9
 #define STATE_COUNT 5
-#define SYMBOL_COUNT 7
+#define SYMBOL_COUNT 9
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 4
+#define TOKEN_COUNT 7
 #define EXTERNAL_TOKEN_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 0
 
 enum {
   sym_integer = 1,
   sym_float = 2,
-  sym_comment = 3,
-  sym_program = 4,
-  sym__number = 5,
-  aux_sym_program_repeat1 = 6,
+  sym_true = 3,
+  sym_false = 4,
+  sym_nil = 5,
+  sym_comment = 6,
+  sym_program = 7,
+  aux_sym_program_repeat1 = 8,
 };
 
 static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "END",
   [sym_integer] = "integer",
   [sym_float] = "float",
+  [sym_true] = "true",
+  [sym_false] = "false",
+  [sym_nil] = "nil",
   [sym_comment] = "comment",
   [sym_program] = "program",
-  [sym__number] = "_number",
   [aux_sym_program_repeat1] = "program_repeat1",
 };
 
@@ -45,16 +49,24 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
+  [sym_true] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_false] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_nil] = {
+    .visible = true,
+    .named = true,
+  },
   [sym_comment] = {
     .visible = true,
     .named = true,
   },
   [sym_program] = {
     .visible = true,
-    .named = true,
-  },
-  [sym__number] = {
-    .visible = false,
     .named = true,
   },
   [aux_sym_program_repeat1] = {
@@ -75,6 +87,12 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         ADVANCE(3);
       if (lookahead == '\\')
         SKIP(17);
+      if (lookahead == 'f')
+        ADVANCE(18);
+      if (lookahead == 'n')
+        ADVANCE(23);
+      if (lookahead == 't')
+        ADVANCE(26);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
@@ -196,21 +214,66 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         SKIP(0);
       END_STATE();
     case 18:
+      if (lookahead == 'a')
+        ADVANCE(19);
+      END_STATE();
+    case 19:
+      if (lookahead == 'l')
+        ADVANCE(20);
+      END_STATE();
+    case 20:
+      if (lookahead == 's')
+        ADVANCE(21);
+      END_STATE();
+    case 21:
+      if (lookahead == 'e')
+        ADVANCE(22);
+      END_STATE();
+    case 22:
+      ACCEPT_TOKEN(sym_false);
+      END_STATE();
+    case 23:
+      if (lookahead == 'i')
+        ADVANCE(24);
+      END_STATE();
+    case 24:
+      if (lookahead == 'l')
+        ADVANCE(25);
+      END_STATE();
+    case 25:
+      ACCEPT_TOKEN(sym_nil);
+      END_STATE();
+    case 26:
+      if (lookahead == 'r')
+        ADVANCE(27);
+      END_STATE();
+    case 27:
+      if (lookahead == 'u')
+        ADVANCE(28);
+      END_STATE();
+    case 28:
+      if (lookahead == 'e')
+        ADVANCE(29);
+      END_STATE();
+    case 29:
+      ACCEPT_TOKEN(sym_true);
+      END_STATE();
+    case 30:
       if (lookahead == 0)
         ADVANCE(1);
       if (lookahead == '#')
         ADVANCE(2);
       if (lookahead == '\\')
-        SKIP(19);
+        SKIP(31);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ')
-        SKIP(18);
+        SKIP(30);
       END_STATE();
-    case 19:
+    case 31:
       if (lookahead == '\n')
-        SKIP(18);
+        SKIP(30);
       END_STATE();
     default:
       return false;
@@ -220,7 +283,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
 static TSLexMode ts_lex_modes[STATE_COUNT] = {
   [0] = {.lex_state = 0},
   [1] = {.lex_state = 0},
-  [2] = {.lex_state = 18},
+  [2] = {.lex_state = 30},
   [3] = {.lex_state = 0},
   [4] = {.lex_state = 0},
 };
@@ -230,15 +293,20 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(1),
     [sym_integer] = ACTIONS(3),
     [sym_float] = ACTIONS(1),
+    [sym_true] = ACTIONS(1),
+    [sym_false] = ACTIONS(1),
+    [sym_nil] = ACTIONS(1),
     [sym_comment] = ACTIONS(1),
   },
   [1] = {
     [sym_program] = STATE(2),
-    [sym__number] = STATE(3),
     [aux_sym_program_repeat1] = STATE(3),
     [ts_builtin_sym_end] = ACTIONS(5),
     [sym_integer] = ACTIONS(7),
     [sym_float] = ACTIONS(9),
+    [sym_true] = ACTIONS(9),
+    [sym_false] = ACTIONS(9),
+    [sym_nil] = ACTIONS(9),
     [sym_comment] = ACTIONS(11),
   },
   [2] = {
@@ -246,19 +314,23 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_comment] = ACTIONS(11),
   },
   [3] = {
-    [sym__number] = STATE(4),
     [aux_sym_program_repeat1] = STATE(4),
     [ts_builtin_sym_end] = ACTIONS(15),
     [sym_integer] = ACTIONS(17),
     [sym_float] = ACTIONS(19),
+    [sym_true] = ACTIONS(19),
+    [sym_false] = ACTIONS(19),
+    [sym_nil] = ACTIONS(19),
     [sym_comment] = ACTIONS(11),
   },
   [4] = {
-    [sym__number] = STATE(4),
     [aux_sym_program_repeat1] = STATE(4),
     [ts_builtin_sym_end] = ACTIONS(21),
     [sym_integer] = ACTIONS(23),
     [sym_float] = ACTIONS(26),
+    [sym_true] = ACTIONS(26),
+    [sym_false] = ACTIONS(26),
+    [sym_nil] = ACTIONS(26),
     [sym_comment] = ACTIONS(11),
   },
 };

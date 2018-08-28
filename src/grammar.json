@@ -4,22 +4,30 @@
     "program": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_number"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "integer"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "float"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "true"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "false"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "nil"
+          }
+        ]
       }
-    },
-    "_number": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "float"
-        }
-      ]
     },
     "integer": {
       "type": "PATTERN",
@@ -28,6 +36,18 @@
     "float": {
       "type": "PATTERN",
       "value": "\\d(_?\\d)*\\.\\d(_?\\d)*([eE][\\+-]?\\d(_?\\d)*)?"
+    },
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
+    },
+    "nil": {
+      "type": "STRING",
+      "value": "nil"
     },
     "comment": {
       "type": "TOKEN",

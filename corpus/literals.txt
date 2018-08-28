@@ -73,3 +73,23 @@ float in scientific notation
 
 (program (float) (float) (float) (float))
 
+========
+booleans
+========
+
+true
+false
+
+---
+
+(program (true) (false))
+
+===
+nil
+===
+
+nil
+
+---
+
+(program (nil))
