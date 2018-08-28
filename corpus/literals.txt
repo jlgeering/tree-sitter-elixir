@@ -48,3 +48,28 @@ integer in hexadecimal notation
 ---
 
 (program (integer) (integer))
+
+=====
+float
+=====
+
+1.0
+123.456
+---
+
+(program (float) (float))
+
+============================
+float in scientific notation
+============================
+
+1.0E0
+1.0e+6
+1.0e-6
+1.234_5e678_90
+
+
+---
+
+(program (float) (float) (float) (float))
+
