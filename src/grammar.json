@@ -37,6 +37,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "charlist"
+        },
+        {
+          "type": "SYMBOL",
           "name": "tuple"
         },
         {
@@ -93,6 +97,26 @@
         {
           "type": "STRING",
           "value": ":nil"
+        }
+      ]
+    },
+    "charlist": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\\\'|[^']"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "'"
         }
       ]
     },

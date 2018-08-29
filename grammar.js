@@ -16,6 +16,7 @@ module.exports = grammar({
       $.false,
       $.atom,
       $.nil,
+      $.charlist,
       $.tuple,
       $.list,
     ),
@@ -29,6 +30,12 @@ module.exports = grammar({
     atom: $ => /:\w([@\w])*(!|\?)?|:'.*'|:".*"/,
 
     nil: $ => choice('nil',':nil'),
+
+    charlist: $ => seq(
+      '\'',
+      repeat(/\\'|[^']/),
+      '\'',
+    ),
 
     tuple: $ => seq(
       '{',
