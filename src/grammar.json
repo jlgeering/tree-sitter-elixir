@@ -81,11 +81,20 @@
     },
     "atom": {
       "type": "PATTERN",
-      "value": ":\\w(_?\\w)*|:'.*'|:\".*\""
+      "value": ":\\w([@\\w])*(!|\\?)?|:'.*'|:\".*\""
     },
     "nil": {
-      "type": "STRING",
-      "value": "nil"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "nil"
+        },
+        {
+          "type": "STRING",
+          "value": ":nil"
+        }
+      ]
     },
     "tuple": {
       "type": "SEQ",

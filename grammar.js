@@ -26,10 +26,10 @@ module.exports = grammar({
     true: $ => choice('true',':true'),
     false: $ => choice('false',':false'),
 
-    atom: $ => /:\w(_?\w)*|:'.*'|:".*"/,
+    atom: $ => /:\w([@\w])*(!|\?)?|:'.*'|:".*"/,
 
-    nil: $ => 'nil',
-    
+    nil: $ => choice('nil',':nil'),
+
     tuple: $ => seq(
       '{',
       optional(

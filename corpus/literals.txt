@@ -93,10 +93,31 @@ atoms
 :ok
 :hello_world
 :Hello_World
+:_42
+:_foo
+:foo!
+:bar?
+:foo@bar
 
 ---
 
-(program (atom) (atom) (atom))
+(program
+	(atom)
+	(atom)
+	(atom)
+	(atom)
+	(atom)
+	(atom)
+	(atom)
+	(atom))
+
+========================
+TODO atoms with operator
+========================
+
+---
+
+(program)
 
 =================
 atoms with quotes
@@ -115,7 +136,8 @@ nil
 ===
 
 nil
+:nil
 
 ---
 
-(program (nil))
+(program (nil) (nil))
