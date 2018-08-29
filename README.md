@@ -7,5 +7,6 @@ Elixir grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 #### References
 
-* TODO find a Elixir grammar reference
+* https://elixir-lang.org/getting-started/basic-types.html
+* TODO find more Elixir grammar reference
 * inspired by [Ruby tree-sitter grammar](https://github.com/tree-sitter/tree-sitter-ruby)

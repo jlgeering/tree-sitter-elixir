@@ -24,6 +24,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "atom"
+          },
+          {
+            "type": "SYMBOL",
             "name": "nil"
           }
         ]
@@ -38,12 +42,34 @@
       "value": "\\d(_?\\d)*\\.\\d(_?\\d)*([eE][\\+-]?\\d(_?\\d)*)?"
     },
     "true": {
-      "type": "STRING",
-      "value": "true"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": ":true"
+        }
+      ]
     },
     "false": {
-      "type": "STRING",
-      "value": "false"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": ":false"
+        }
+      ]
+    },
+    "atom": {
+      "type": "PATTERN",
+      "value": ":\\w(_?\\w)*|:'.*'|:\".*\""
     },
     "nil": {
       "type": "STRING",

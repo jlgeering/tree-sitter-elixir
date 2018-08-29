@@ -78,11 +78,36 @@ booleans
 ========
 
 true
+:true
 false
+:false
 
 ---
 
-(program (true) (false))
+(program (true) (true) (false) (false))
+
+=====
+atoms
+=====
+
+:ok
+:hello_world
+:Hello_World
+---
+
+(program (atom) (atom) (atom))
+
+=================
+atoms with quotes
+=================
+
+:'hello-world'
+:"multiple words"
+:""
+
+---
+
+(program (atom) (atom) (atom))
 
 ===
 nil
