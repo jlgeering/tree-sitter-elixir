@@ -7,14 +7,17 @@ module.exports = grammar({
   ],
 
   rules: {
-    program: $ => repeat(choice(
+    program: $ => repeat($._expression),
+    
+    _expression: $ => choice(
       $.integer,
       $.float,
       $.true,
       $.false,
       $.atom,
       $.nil,
-    )),
+      $.tuple,
+    ),
     
     integer: $ => /0b[01](_?[01])*|0o[0-7](_?[0-7])*|0x[0-9a-fA-F](_?[0-9a-fA-F])*|\d(_?\d)*/,
     float: $ => /\d(_?\d)*\.\d(_?\d)*([eE][\+-]?\d(_?\d)*)?/,
@@ -25,6 +28,18 @@ module.exports = grammar({
     atom: $ => /:\w(_?\w)*|:'.*'|:".*"/,
 
     nil: $ => 'nil',
+    
+    tuple: $ => seq(
+      '{',
+      optional(
+        seq(
+          $._expression,
+          repeat(seq(',', $._expression)),
+          optional(','),
+        ),
+      ),
+      '}',
+    ),
 
     comment: $ => token(seq('#', /.*/)),
   }

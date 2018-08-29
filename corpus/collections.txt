@@ -1,0 +1,60 @@
+===========
+empty tuple
+===========
+
+{}
+{ }
+{
+}
+
+---
+
+(program (tuple) (tuple) (tuple))
+
+=======
+1-tuple
+=======
+
+{:ok}
+{ :ok }
+{:ok,}
+{
+  :ok
+}
+{
+  :ok,
+}
+
+---
+
+(program
+  (tuple (atom))
+  (tuple (atom))
+  (tuple (atom))
+  (tuple (atom))
+  (tuple (atom)))
+
+=============
+bigger tuples
+=============
+
+{:hello, :world}
+{:hello, :world,}
+{1, 2, 3}
+
+---
+
+(program
+  (tuple (atom) (atom))
+  (tuple (atom) (atom))
+  (tuple (integer) (integer) (integer)))
+  
+=============
+nested tuples
+=============
+
+{{}}
+
+---
+
+(program (tuple (tuple)))
