@@ -41,8 +41,12 @@ module.exports = grammar({
       ),
       '}',
     ),
-    
-    list: $ => seq(
+
+    list: $ => choice(
+      $._simple_list,
+      $._head_tail_list,
+    ),
+    _simple_list: $ => seq(
       '[',
       optional(
         seq(
@@ -53,6 +57,15 @@ module.exports = grammar({
       ),
       ']',
     ),
+    _head_tail_list: $ => seq(
+      '[',
+      $.head,
+      '|',
+      $.tail,
+      ']',
+    ),
+    head: $ => $._expression,
+    tail: $ => $.list,
 
     comment: $ => token(seq('#', /.*/)),
   }

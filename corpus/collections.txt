@@ -90,3 +90,30 @@ lists
   (list (integer) (integer) (integer))
   (list (integer) (integer) (integer))
   (list (integer) (integer) (integer)))
+
+=================================
+lists in [ head | tail ] notation
+=================================
+
+[1|[]]
+[[]|[]]
+[1|[:ok|[]]]
+[ 1 | [ 2 , 3 ] ]
+---
+
+(program
+  (list
+    (head (integer))
+    (tail (list)))
+  (list
+    (head (list))
+    (tail (list)))
+  (list
+    (head (integer))
+    (tail
+      (list
+        (head (atom))
+        (tail (list)))))
+  (list
+    (head (integer))
+    (tail (list (integer) (integer)))))
