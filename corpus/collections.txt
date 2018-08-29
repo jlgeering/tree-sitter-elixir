@@ -1,6 +1,6 @@
-===========
-empty tuple
-===========
+============
+empty tuples
+============
 
 {}
 { }
@@ -11,9 +11,9 @@ empty tuple
 
 (program (tuple) (tuple) (tuple))
 
-=======
-1-tuple
-=======
+========
+1-tuples
+========
 
 {:ok}
 { :ok }
@@ -58,3 +58,35 @@ nested tuples
 ---
 
 (program (tuple (tuple)))
+
+===========
+empty lists
+===========
+
+[]
+[ ]
+[
+]
+
+---
+
+(program (list) (list) (list))
+
+=====
+lists
+=====
+
+[1, 2, 3]
+[1, 2, 3,]
+[
+  1,
+  2,
+  3,
+]
+
+---
+
+(program
+  (list (integer) (integer) (integer))
+  (list (integer) (integer) (integer))
+  (list (integer) (integer) (integer)))

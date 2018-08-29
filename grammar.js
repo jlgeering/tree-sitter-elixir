@@ -17,6 +17,7 @@ module.exports = grammar({
       $.atom,
       $.nil,
       $.tuple,
+      $.list,
     ),
     
     integer: $ => /0b[01](_?[01])*|0o[0-7](_?[0-7])*|0x[0-9a-fA-F](_?[0-9a-fA-F])*|\d(_?\d)*/,
@@ -39,6 +40,18 @@ module.exports = grammar({
         ),
       ),
       '}',
+    ),
+    
+    list: $ => seq(
+      '[',
+      optional(
+        seq(
+          $._expression,
+          repeat(seq(',', $._expression)),
+          optional(','),
+        ),
+      ),
+      ']',
     ),
 
     comment: $ => token(seq('#', /.*/)),
