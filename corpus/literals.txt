@@ -73,9 +73,9 @@ float in scientific notation
 
 (program (float) (float) (float) (float))
 
-========
-booleans
-========
+==============
+true and false
+==============
 
 true
 :true
@@ -86,9 +86,9 @@ false
 
 (program (true) (true) (false) (false))
 
-=====
-atoms
-=====
+====
+atom
+====
 
 :ok
 :hello_world
@@ -111,17 +111,9 @@ atoms
   (atom)
   (atom))
 
-========================
-TODO atoms with operator
-========================
-
----
-
-(program)
-
-=================
-atoms with quotes
-=================
+================
+atom with quotes
+================
 
 :'hello-world'
 :"multiple words"
@@ -142,9 +134,9 @@ nil
 
 (program (nil) (nil))
 
-=========
-charlists
-=========
+========
+charlist
+========
 
 ''
 'foo'

@@ -1,6 +1,6 @@
-========
-comments
-========
+=======
+comment
+=======
 
 # anything else here should be ignored
 

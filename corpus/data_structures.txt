@@ -1,6 +1,6 @@
-============
-empty tuples
-============
+===========
+empty tuple
+===========
 
 {}
 { }
@@ -11,9 +11,9 @@ empty tuples
 
 (program (tuple) (tuple) (tuple))
 
-========
-1-tuples
-========
+=======
+1-tuple
+=======
 
 {:ok}
 { :ok }
@@ -34,9 +34,9 @@ empty tuples
   (tuple (atom))
   (tuple (atom)))
 
-=============
-bigger tuples
-=============
+============
+bigger tuple
+============
 
 {:hello, :world}
 {:hello, :world,}
@@ -59,9 +59,9 @@ nested tuples
 
 (program (tuple (tuple)))
 
-===========
-empty lists
-===========
+==========
+empty list
+==========
 
 []
 [ ]
@@ -72,9 +72,9 @@ empty lists
 
 (program (list) (list) (list))
 
-=====
-lists
-=====
+====
+list
+====
 
 [1, 2, 3]
 [1, 2, 3,]
@@ -91,9 +91,9 @@ lists
   (list (integer) (integer) (integer))
   (list (integer) (integer) (integer)))
 
-=================================
-lists in [ head | tail ] notation
-=================================
+================================
+list in [ head | tail ] notation
+================================
 
 [1|[]]
 [[]|[]]
