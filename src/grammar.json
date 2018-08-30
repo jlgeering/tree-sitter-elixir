@@ -84,8 +84,190 @@
       ]
     },
     "atom": {
-      "type": "PATTERN",
-      "value": ":\\w([@\\w])*(!|\\?)?|:'.*'|:\".*\""
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": ":\\w([@\\w])*(!|\\?)?|:'.*'|:\".*\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_operator_atom"
+        }
+      ]
+    },
+    "_operator_atom": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":!"
+        },
+        {
+          "type": "STRING",
+          "value": ":!="
+        },
+        {
+          "type": "STRING",
+          "value": ":!=="
+        },
+        {
+          "type": "STRING",
+          "value": ":&"
+        },
+        {
+          "type": "STRING",
+          "value": ":&&"
+        },
+        {
+          "type": "STRING",
+          "value": ":&&&"
+        },
+        {
+          "type": "STRING",
+          "value": ":*"
+        },
+        {
+          "type": "STRING",
+          "value": ":+"
+        },
+        {
+          "type": "STRING",
+          "value": ":++"
+        },
+        {
+          "type": "STRING",
+          "value": ":-"
+        },
+        {
+          "type": "STRING",
+          "value": ":--"
+        },
+        {
+          "type": "STRING",
+          "value": ":."
+        },
+        {
+          "type": "STRING",
+          "value": ":.."
+        },
+        {
+          "type": "STRING",
+          "value": ":/"
+        },
+        {
+          "type": "STRING",
+          "value": ":::"
+        },
+        {
+          "type": "STRING",
+          "value": ":<"
+        },
+        {
+          "type": "STRING",
+          "value": ":<-"
+        },
+        {
+          "type": "STRING",
+          "value": ":<<<"
+        },
+        {
+          "type": "STRING",
+          "value": ":<<~"
+        },
+        {
+          "type": "STRING",
+          "value": ":<="
+        },
+        {
+          "type": "STRING",
+          "value": ":<>"
+        },
+        {
+          "type": "STRING",
+          "value": ":<|>"
+        },
+        {
+          "type": "STRING",
+          "value": ":<~"
+        },
+        {
+          "type": "STRING",
+          "value": ":<~>"
+        },
+        {
+          "type": "STRING",
+          "value": ":="
+        },
+        {
+          "type": "STRING",
+          "value": ":=="
+        },
+        {
+          "type": "STRING",
+          "value": ":==="
+        },
+        {
+          "type": "STRING",
+          "value": ":=>"
+        },
+        {
+          "type": "STRING",
+          "value": ":=~"
+        },
+        {
+          "type": "STRING",
+          "value": ":>"
+        },
+        {
+          "type": "STRING",
+          "value": ":>="
+        },
+        {
+          "type": "STRING",
+          "value": ":>>>"
+        },
+        {
+          "type": "STRING",
+          "value": ":@"
+        },
+        {
+          "type": "STRING",
+          "value": ":\\\\"
+        },
+        {
+          "type": "STRING",
+          "value": ":^"
+        },
+        {
+          "type": "STRING",
+          "value": ":|"
+        },
+        {
+          "type": "STRING",
+          "value": ":|>"
+        },
+        {
+          "type": "STRING",
+          "value": ":||"
+        },
+        {
+          "type": "STRING",
+          "value": ":|||"
+        },
+        {
+          "type": "STRING",
+          "value": ":~>"
+        },
+        {
+          "type": "STRING",
+          "value": ":~>>"
+        },
+        {
+          "type": "STRING",
+          "value": ":~~~"
+        }
+      ]
     },
     "nil": {
       "type": "CHOICE",
