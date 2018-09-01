@@ -169,3 +169,32 @@ binary
   (binary (binary_segment (integer)) (binary_segment (integer) (binary_options)))
   (binary (binary_segment (charlist)))
   (comment))
+
+======
+string
+======
+
+""
+"hêłłö"
+"1\"2'"
+
+---
+
+(program
+  (string)
+  (string)
+  (string))
+
+===================
+string with newline
+===================
+
+"hello\nworld"
+"hello
+world"
+
+---
+
+(program
+  (string)
+  (string))
