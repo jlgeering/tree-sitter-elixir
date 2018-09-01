@@ -22,6 +22,7 @@ module.exports = grammar({
       $.string,
       $.tuple,
       $.list,
+      $.module,
     ),
 
     alias: $ => /[A-Z]\w*(\.[A-Z]\w*)*/,
@@ -159,6 +160,13 @@ module.exports = grammar({
     ),
     head: $ => $._expression,
     tail: $ => $.list,
+
+    module: $ => seq(
+      'defmodule',
+      $.alias,
+      'do',
+      'end',
+    ),
 
     comment: $ => token(seq('#', /.*/)),
   }

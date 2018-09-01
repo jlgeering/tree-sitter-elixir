@@ -1,0 +1,14 @@
+============
+empty module
+============
+
+defmodule ModuleName do
+end
+defmodule Nested.Module do
+end
+
+---
+
+(program
+  (module (alias))
+  (module (alias)))
