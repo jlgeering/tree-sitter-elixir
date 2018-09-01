@@ -150,3 +150,22 @@ charlist
   (charlist)
   (charlist)
   (charlist))
+
+======
+binary
+======
+
+<<>>
+<<1>>
+<<1,2::signed-size(16),>>
+<<'charlist'>>
+# <<"string", rest::binary>>
+
+---
+
+(program
+  (binary)
+  (binary (binary_segment (integer)))
+  (binary (binary_segment (integer)) (binary_segment (integer) (binary_options)))
+  (binary (binary_segment (charlist)))
+  (comment))

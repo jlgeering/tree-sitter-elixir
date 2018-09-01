@@ -17,6 +17,7 @@ module.exports = grammar({
       $.atom,
       $.nil,
       $.charlist,
+      $.binary,
       $.tuple,
       $.list,
     ),
@@ -84,6 +85,32 @@ module.exports = grammar({
       repeat(/\\'|[^']/),
       '\'',
     ),
+    
+    binary: $ => seq(
+      '<<',
+      optional(
+        seq(
+          $.binary_segment,
+          repeat(seq(',', $.binary_segment)),
+          optional(','),
+        ),
+      ),
+      '>>',
+    ),
+    
+    binary_segment: $ => seq(
+      choice(
+        $.integer,
+        $.charlist,
+        // TODO string literals
+      ),
+      optional(seq(
+        '::',
+        $.binary_options,
+      )),
+    ),
+    
+    binary_options: $ => /[-a-z0-9()]*/,
 
     tuple: $ => seq(
       '{',

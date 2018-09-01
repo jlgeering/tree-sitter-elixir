@@ -10,5 +10,6 @@ Elixir grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 * https://elixir-lang.org/getting-started/basic-types.html
 * https://hexdocs.pm/elixir/1.6/syntax-reference.html
 * https://hexdocs.pm/elixir/1.6/operators.html
-* TODO find more Elixir grammar reference
+* https://hexdocs.pm/elixir/Kernel.SpecialForms.html
+* TODO find more better Elixir grammar reference
 * inspired by [Ruby tree-sitter grammar](https://github.com/tree-sitter/tree-sitter-ruby)
