@@ -381,6 +381,10 @@
             {
               "type": "SYMBOL",
               "name": "charlist"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
             }
           ]
         },

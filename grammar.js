@@ -103,7 +103,7 @@ module.exports = grammar({
       choice(
         $.integer,
         $.charlist,
-        // TODO string literals
+        $.string,
         // TODO identifier
       ),
       optional(seq(

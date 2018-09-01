@@ -1430,6 +1430,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(aux_sym_SLASH_BSLASH_BSLASH_SQUOTE_PIPE_LBRACK_CARET_SQUOTE_RBRACK_SLASH);
       END_STATE();
     case 120:
+      if (lookahead == '\"')
+        ADVANCE(2);
       if (lookahead == '#')
         ADVANCE(3);
       if (lookahead == '\'')
@@ -1745,7 +1747,7 @@ static TSLexMode ts_lex_modes[STATE_COUNT] = {
   [16] = {.lex_state = 135},
   [17] = {.lex_state = 114},
   [18] = {.lex_state = 135},
-  [19] = {.lex_state = 114},
+  [19] = {.lex_state = 0},
   [20] = {.lex_state = 125},
   [21] = {.lex_state = 114},
   [22] = {.lex_state = 139},
@@ -1759,7 +1761,7 @@ static TSLexMode ts_lex_modes[STATE_COUNT] = {
   [30] = {.lex_state = 120},
   [31] = {.lex_state = 114},
   [32] = {.lex_state = 135},
-  [33] = {.lex_state = 114},
+  [33] = {.lex_state = 0},
   [34] = {.lex_state = 125},
   [35] = {.lex_state = 129},
   [36] = {.lex_state = 114},
@@ -2197,9 +2199,11 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [7] = {
     [sym_charlist] = STATE(16),
     [sym_binary_segment] = STATE(18),
+    [sym_string] = STATE(16),
     [sym_integer] = ACTIONS(61),
     [anon_sym_SQUOTE] = ACTIONS(27),
     [anon_sym_GT_GT] = ACTIONS(63),
+    [anon_sym_DQUOTE] = ACTIONS(31),
     [sym_comment] = ACTIONS(37),
   },
   [8] = {
@@ -2701,6 +2705,8 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_SQUOTE] = ACTIONS(113),
     [anon_sym_LT_LT] = ACTIONS(113),
     [anon_sym_COMMA] = ACTIONS(113),
+    [anon_sym_GT_GT] = ACTIONS(113),
+    [anon_sym_COLON_COLON] = ACTIONS(115),
     [anon_sym_DQUOTE] = ACTIONS(113),
     [anon_sym_LBRACE] = ACTIONS(113),
     [anon_sym_RBRACE] = ACTIONS(113),
@@ -3013,9 +3019,11 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [30] = {
     [sym_charlist] = STATE(16),
     [sym_binary_segment] = STATE(44),
+    [sym_string] = STATE(16),
     [sym_integer] = ACTIONS(61),
     [anon_sym_SQUOTE] = ACTIONS(27),
     [anon_sym_GT_GT] = ACTIONS(199),
+    [anon_sym_DQUOTE] = ACTIONS(31),
     [sym_comment] = ACTIONS(37),
   },
   [31] = {
@@ -3144,6 +3152,8 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_SQUOTE] = ACTIONS(207),
     [anon_sym_LT_LT] = ACTIONS(207),
     [anon_sym_COMMA] = ACTIONS(207),
+    [anon_sym_GT_GT] = ACTIONS(207),
+    [anon_sym_COLON_COLON] = ACTIONS(209),
     [anon_sym_DQUOTE] = ACTIONS(207),
     [anon_sym_LBRACE] = ACTIONS(207),
     [anon_sym_RBRACE] = ACTIONS(207),
@@ -3529,9 +3539,11 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [45] = {
     [sym_charlist] = STATE(16),
     [sym_binary_segment] = STATE(44),
+    [sym_string] = STATE(16),
     [sym_integer] = ACTIONS(61),
     [anon_sym_SQUOTE] = ACTIONS(27),
     [anon_sym_GT_GT] = ACTIONS(244),
+    [anon_sym_DQUOTE] = ACTIONS(31),
     [sym_comment] = ACTIONS(37),
   },
   [46] = {
@@ -3907,8 +3919,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [57] = {
     [sym_charlist] = STATE(16),
     [sym_binary_segment] = STATE(44),
+    [sym_string] = STATE(16),
     [sym_integer] = ACTIONS(61),
     [anon_sym_SQUOTE] = ACTIONS(27),
+    [anon_sym_DQUOTE] = ACTIONS(31),
     [sym_comment] = ACTIONS(37),
   },
   [58] = {

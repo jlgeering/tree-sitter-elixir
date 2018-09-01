@@ -159,7 +159,8 @@ binary
 <<1>>
 <<1,2::signed-size(16),>>
 <<'charlist'>>
-# <<"string", rest::binary>>
+<< 1, "2", 3 >>
+# <<"hello", rest::binary>>
 
 ---
 
@@ -168,6 +169,10 @@ binary
   (binary (binary_segment (integer)))
   (binary (binary_segment (integer)) (binary_segment (integer) (binary_options)))
   (binary (binary_segment (charlist)))
+  (binary
+    (binary_segment (integer))
+    (binary_segment (string))
+    (binary_segment (integer)))
   (comment))
 
 ======
