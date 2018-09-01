@@ -1,3 +1,18 @@
+=====
+alias
+=====
+
+Module
+ModuleName
+Nested.MiddleModule.ModuleName
+
+---
+
+(program
+  (alias)
+  (alias)
+  (alias))
+
 =======
 integer
 =======

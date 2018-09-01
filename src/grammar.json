@@ -13,6 +13,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "alias"
+        },
+        {
+          "type": "SYMBOL",
           "name": "integer"
         },
         {
@@ -56,6 +60,10 @@
           "name": "list"
         }
       ]
+    },
+    "alias": {
+      "type": "PATTERN",
+      "value": "[A-Z]\\w*(\\.[A-Z]\\w*)*"
     },
     "integer": {
       "type": "PATTERN",

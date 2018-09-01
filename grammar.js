@@ -8,8 +8,9 @@ module.exports = grammar({
 
   rules: {
     program: $ => repeat($._expression),
-    
+
     _expression: $ => choice(
+      $.alias,
       $.integer,
       $.float,
       $.true,
@@ -22,10 +23,12 @@ module.exports = grammar({
       $.tuple,
       $.list,
     ),
-    
+
+    alias: $ => /[A-Z]\w*(\.[A-Z]\w*)*/,
+
     integer: $ => /0b[01](_?[01])*|0o[0-7](_?[0-7])*|0x[0-9a-fA-F](_?[0-9a-fA-F])*|\d(_?\d)*/,
     float: $ => /\d(_?\d)*\.\d(_?\d)*([eE][\+-]?\d(_?\d)*)?/,
-    
+
     true: $ => choice('true',':true'),
     false: $ => choice('false',':false'),
 
@@ -86,7 +89,7 @@ module.exports = grammar({
       repeat(/\\'|[^']/),
       '\'',
     ),
-    
+
     binary: $ => seq(
       '<<',
       optional(
@@ -98,7 +101,7 @@ module.exports = grammar({
       ),
       '>>',
     ),
-    
+
     binary_segment: $ => seq(
       choice(
         $.integer,
@@ -111,7 +114,7 @@ module.exports = grammar({
         $.binary_options,
       )),
     ),
-    
+
     binary_options: $ => /[-a-z0-9()]*/,
 
     string: $ => seq(
