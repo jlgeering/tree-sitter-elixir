@@ -197,13 +197,17 @@ string
 ""
 "hêłłö"
 "1\"2'"
+# TODO "123 \#{456}"
+# TODO "123 #\{456}"
 
 ---
 
 (program
   (string)
   (string)
-  (string))
+  (string)
+  (comment)
+  (comment))
 
 ===================
 string with newline
@@ -218,3 +222,14 @@ world"
 (program
   (string)
   (string))
+
+=========================
+string with interpolation
+=========================
+
+# TODO "hellö #{:world}"
+
+---
+
+(program
+  (comment))
