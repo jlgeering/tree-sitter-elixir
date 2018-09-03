@@ -629,8 +629,28 @@
           "value": "do"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "module_attribute"
+          }
+        },
+        {
           "type": "STRING",
           "value": "end"
+        }
+      ]
+    },
+    "module_attribute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "@\\w+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_value"
         }
       ]
     },

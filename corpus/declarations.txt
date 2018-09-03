@@ -12,3 +12,19 @@ end
 (program
   (module (alias))
   (module (alias)))
+
+======================
+module with attributes
+======================
+
+defmodule Name do
+  @moduledoc "an apple a day, keeps the moduledoc away"
+  @behaviour Good.Module
+end
+
+---
+
+(program
+  (module (alias)
+    (module_attribute (string))
+    (module_attribute (alias))))

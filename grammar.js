@@ -167,7 +167,13 @@ module.exports = grammar({
       'defmodule',
       $.alias,
       'do',
+      repeat($.module_attribute),
       'end',
+    ),
+    
+    module_attribute: $ => seq(
+      /@\w+/,
+      $._value,
     ),
 
     comment: $ => token(seq('#', /.*/)),
