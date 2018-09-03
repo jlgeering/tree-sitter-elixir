@@ -9,7 +9,9 @@ module.exports = grammar({
   rules: {
     program: $ => repeat($._expression),
 
-    _expression: $ => choice(
+    _expression: $ => $._value,
+
+    _value: $ => choice(
       $.alias,
       $.integer,
       $.float,

@@ -9,6 +9,10 @@
       }
     },
     "_expression": {
+      "type": "SYMBOL",
+      "name": "_value"
+    },
+    "_value": {
       "type": "CHOICE",
       "members": [
         {

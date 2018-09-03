@@ -7,7 +7,7 @@
 
 #define LANGUAGE_VERSION 9
 #define STATE_COUNT 66
-#define SYMBOL_COUNT 94
+#define SYMBOL_COUNT 95
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 71
 #define EXTERNAL_TOKEN_COUNT 0
@@ -86,27 +86,28 @@ enum {
   sym_comment = 70,
   sym_program = 71,
   sym__expression = 72,
-  sym_true = 73,
-  sym_false = 74,
-  sym_atom = 75,
-  sym__operator_atom = 76,
-  sym_nil = 77,
-  sym_charlist = 78,
-  sym_binary = 79,
-  sym_binary_segment = 80,
-  sym_string = 81,
-  sym_tuple = 82,
-  sym_list = 83,
-  sym__simple_list = 84,
-  sym__head_tail_list = 85,
-  sym_head = 86,
-  sym_tail = 87,
-  sym_module = 88,
-  aux_sym_program_repeat1 = 89,
-  aux_sym_charlist_repeat1 = 90,
-  aux_sym_binary_repeat1 = 91,
-  aux_sym_string_repeat1 = 92,
-  aux_sym_tuple_repeat1 = 93,
+  sym__value = 73,
+  sym_true = 74,
+  sym_false = 75,
+  sym_atom = 76,
+  sym__operator_atom = 77,
+  sym_nil = 78,
+  sym_charlist = 79,
+  sym_binary = 80,
+  sym_binary_segment = 81,
+  sym_string = 82,
+  sym_tuple = 83,
+  sym_list = 84,
+  sym__simple_list = 85,
+  sym__head_tail_list = 86,
+  sym_head = 87,
+  sym_tail = 88,
+  sym_module = 89,
+  aux_sym_program_repeat1 = 90,
+  aux_sym_charlist_repeat1 = 91,
+  aux_sym_binary_repeat1 = 92,
+  aux_sym_string_repeat1 = 93,
+  aux_sym_tuple_repeat1 = 94,
 };
 
 static const char *ts_symbol_names[] = {
@@ -183,6 +184,7 @@ static const char *ts_symbol_names[] = {
   [sym_comment] = "comment",
   [sym_program] = "program",
   [sym__expression] = "_expression",
+  [sym__value] = "_value",
   [sym_true] = "true",
   [sym_false] = "false",
   [sym_atom] = "atom",
@@ -496,6 +498,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym__expression] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__value] = {
     .visible = false,
     .named = true,
   },
@@ -2082,6 +2088,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [1] = {
     [sym_program] = STATE(12),
     [sym__expression] = STATE(14),
+    [sym__value] = STATE(14),
     [sym_true] = STATE(14),
     [sym_false] = STATE(14),
     [sym_atom] = STATE(14),
@@ -2445,6 +2452,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [9] = {
     [sym__expression] = STATE(23),
+    [sym__value] = STATE(23),
     [sym_true] = STATE(23),
     [sym_false] = STATE(23),
     [sym_atom] = STATE(23),
@@ -2521,6 +2529,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [10] = {
     [sym__expression] = STATE(25),
+    [sym__value] = STATE(25),
     [sym_true] = STATE(25),
     [sym_false] = STATE(25),
     [sym_atom] = STATE(25),
@@ -2672,6 +2681,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [14] = {
     [sym__expression] = STATE(28),
+    [sym__value] = STATE(28),
     [sym_true] = STATE(28),
     [sym_false] = STATE(28),
     [sym_atom] = STATE(28),
@@ -3128,6 +3138,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [28] = {
     [sym__expression] = STATE(28),
+    [sym__value] = STATE(28),
     [sym_true] = STATE(28),
     [sym_false] = STATE(28),
     [sym_atom] = STATE(28),
@@ -3439,6 +3450,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [37] = {
     [sym__expression] = STATE(51),
+    [sym__value] = STATE(51),
     [sym_true] = STATE(51),
     [sym_false] = STATE(51),
     [sym_atom] = STATE(51),
@@ -3587,6 +3599,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [40] = {
     [sym__expression] = STATE(51),
+    [sym__value] = STATE(51),
     [sym_true] = STATE(51),
     [sym_false] = STATE(51),
     [sym_atom] = STATE(51),
@@ -3911,6 +3924,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [52] = {
     [sym__expression] = STATE(51),
+    [sym__value] = STATE(51),
     [sym_true] = STATE(51),
     [sym_false] = STATE(51),
     [sym_atom] = STATE(51),
@@ -4059,6 +4073,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [55] = {
     [sym__expression] = STATE(51),
+    [sym__value] = STATE(51),
     [sym_true] = STATE(51),
     [sym_false] = STATE(51),
     [sym_atom] = STATE(51),
@@ -4356,6 +4371,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [63] = {
     [sym__expression] = STATE(51),
+    [sym__value] = STATE(51),
     [sym_true] = STATE(51),
     [sym_false] = STATE(51),
     [sym_atom] = STATE(51),
