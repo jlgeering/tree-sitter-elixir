@@ -149,3 +149,16 @@ keyword list
     (keyword (integer))
     (keyword (integer)))
   (comment))
+
+=====================
+keyword list in tuple
+=====================
+
+{:hello, hello: "world"}
+{:foo, :bar, a: 1, b: 2}
+
+---
+
+(program
+  (tuple (atom) (keyword (string)))
+  (tuple (atom) (atom) (keyword (integer)) (keyword (integer))))

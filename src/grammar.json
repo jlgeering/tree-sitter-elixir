@@ -498,6 +498,22 @@
                   }
                 },
                 {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "keyword"
+                      }
+                    ]
+                  }
+                },
+                {
                   "type": "CHOICE",
                   "members": [
                     {

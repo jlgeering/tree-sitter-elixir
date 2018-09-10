@@ -138,6 +138,7 @@ module.exports = grammar({
         seq(
           $._expression,
           repeat(seq(',', $._expression)),
+          repeat(seq(',', $.keyword)),
           optional(','),
         ),
       ),
