@@ -5,8 +5,20 @@ comment
 # anything else here should be ignored
 # even with # this is only 1 comment
 
+# "inside a commented out # string"
+
+# """
+# line 1
+# line 2
+# """
+
 ---
 
 (program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
   (comment)
   (comment))

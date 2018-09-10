@@ -233,3 +233,20 @@ string with interpolation
 
 (program
   (comment))
+
+================
+multiline string
+================
+
+# TODO
+# """
+# line 1
+# line 2
+# """
+
+(program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment))
