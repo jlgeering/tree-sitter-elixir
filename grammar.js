@@ -24,6 +24,7 @@ module.exports = grammar({
       $.string,
       $.tuple,
       $.list,
+      $.keyword_list,
       $.module,
     ),
 
@@ -138,7 +139,7 @@ module.exports = grammar({
         seq(
           $._expression,
           repeat(seq(',', $._expression)),
-          repeat(seq(',', $.keyword)),
+          optional(seq(',', $.implicit_keyword_list)),
           optional(','),
         ),
       ),
@@ -148,7 +149,6 @@ module.exports = grammar({
     list: $ => choice(
       $._empty_list,
       $._simple_list,
-      $._keyword_list,
       $._head_tail_list,
     ),
     _empty_list: $ => seq('[',']',),
@@ -156,14 +156,7 @@ module.exports = grammar({
       '[',
       $._expression,
       repeat(seq(',', $._expression)),
-      repeat(seq(',', $.keyword)),
-      optional(','),
-      ']',
-    ),
-    _keyword_list: $ => seq(
-      '[',
-      $.keyword,
-      repeat(seq(',', $.keyword)),
+      optional(seq(',', $.implicit_keyword_list)),
       optional(','),
       ']',
     ),
@@ -175,7 +168,23 @@ module.exports = grammar({
       ']',
     ),
     head: $ => $._expression,
-    tail: $ => $.list,
+    tail: $ => choice(
+      $.list,
+      $.keyword_list,
+    ),
+
+    keyword_list: $ => seq(
+      '[',
+      $.keyword,
+      repeat(seq(',', $.keyword)),
+      optional(','),
+      ']',
+    ),
+
+    implicit_keyword_list: $ => prec.right(seq(
+      $.keyword,
+      repeat(seq(',', $.keyword)),
+    )),
 
     module: $ => seq(
       'defmodule',
@@ -187,7 +196,10 @@ module.exports = grammar({
     
     module_attribute: $ => seq(
       /@\w+/,
-      optional($._value),
+      optional(choice(
+        $._value,
+        $.implicit_keyword_list,
+      )),
     ),
 
     comment: $ => token(seq('#', /.*/)),

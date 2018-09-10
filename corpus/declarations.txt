@@ -22,8 +22,10 @@ defmodule Name do
   @before_compile
   @behaviour Good.Module
   @custom_attr [:hello, "world"]
-  # TODO @custom_attr [hello: "world"]
-  # TODO @dialyzer {:nowarn_function, my_fun: 1}
+  @custom_attr [hello: "world"]
+  @custom_attr hello: "world"
+  @custom_attr a: 1, b: 2
+  @dialyzer {:nowarn_function, my_fun: 1}
   @file "hello.ex"
   @external_resource
   @moduledoc "an apple a day, keeps the moduledoc away"
@@ -39,8 +41,10 @@ end
     (module_attribute)
     (module_attribute (alias))
     (module_attribute (list (atom) (string)))
-    (comment)
-    (comment)
+    (module_attribute (keyword_list (keyword (string))))
+    (module_attribute (implicit_keyword_list (keyword (string))))
+    (module_attribute (implicit_keyword_list (keyword (integer)) (keyword (integer))))
+    (module_attribute (tuple (atom) (implicit_keyword_list (keyword (integer)))))
     (module_attribute (string))
     (module_attribute)
     (module_attribute (string))
@@ -58,8 +62,8 @@ defmodule Name do
   # @doc """
   # Doesn't do much.
   # """
-  # TODO @doc deprecated: "Use Module.bar/0 instead"
-  # TODO @doc since: "1.1.0"
+  @doc deprecated: "Use Module.bar/0 instead"
+  @doc since: "1.1.0"
   @impl true
   @impl Module
   @on_definition
@@ -77,8 +81,8 @@ end
     (comment)
     (comment)
     (comment)
-    (comment)
-    (comment)
+    (module_attribute (implicit_keyword_list (keyword (string))))
+    (module_attribute (implicit_keyword_list (keyword (string))))
     (module_attribute (true))
     (module_attribute (alias))
     (module_attribute)
@@ -91,7 +95,7 @@ module with type attributes
 
 defmodule Name do
   @typedoc "This type"
-  # TODO @typedoc since: "1.1.0"
+  @typedoc since: "1.1.0"
   # TODO @type t :: term
 end
 
@@ -100,5 +104,5 @@ end
 (program
   (module (alias)
     (module_attribute (string))
-    (comment)
+    (module_attribute (implicit_keyword_list (keyword (string))))
     (comment)))

@@ -143,22 +143,44 @@ keyword list
 ---
 
 (program
-  (list
+  (keyword_list
     (keyword (string)))
-  (list
+  (keyword_list
     (keyword (integer))
     (keyword (integer)))
   (comment))
 
-=====================
-keyword list in tuple
-=====================
+====================
+keyword list as tail
+====================
 
-{:hello, hello: "world"}
-{:foo, :bar, a: 1, b: 2}
+["head" | [a: 1]]
 
 ---
 
 (program
-  (tuple (atom) (keyword (string)))
-  (tuple (atom) (atom) (keyword (integer)) (keyword (integer))))
+  (list
+    (head (string))
+    (tail (keyword_list (keyword (integer))))))
+
+=====================
+implicit keyword list
+=====================
+
+{:hello, hello: "world"}
+{:foo, :bar, a: 1, b: 2}
+["zero", first: "one", second: "two"]
+
+---
+
+(program
+  (tuple
+    (atom)
+    (implicit_keyword_list (keyword (string))))
+  (tuple
+    (atom)
+    (atom)
+    (implicit_keyword_list (keyword (integer)) (keyword (integer))))
+  (list
+    (string)
+    (implicit_keyword_list (keyword (string)) (keyword (string)))))
