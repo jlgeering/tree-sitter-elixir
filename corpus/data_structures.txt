@@ -184,3 +184,73 @@ implicit keyword list
   (list
     (string)
     (implicit_keyword_list (keyword (string)) (keyword (string)))))
+
+=========
+empty map
+=========
+
+%{}
+%{ }
+%{
+}
+
+---
+
+(program (map) (map) (map))
+
+===
+map
+===
+
+# TODO
+
+---
+
+(program
+  (comment))
+
+==========
+map update
+==========
+
+# TODO
+
+---
+
+(program
+  (comment))
+
+============
+empty struct
+============
+
+%Name{}
+% Name{}
+%Name {}
+% Name {}
+%Name{ }
+%Name{
+}
+
+---
+
+(program
+  (struct (alias))
+  (struct (alias))
+  (struct (alias))
+  (struct (alias))
+  (struct (alias))
+  (struct (alias)))
+
+======
+struct
+======
+
+# TODO
+
+---
+
+(program
+  (comment))
+
+

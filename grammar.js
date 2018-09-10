@@ -23,8 +23,9 @@ module.exports = grammar({
       $.binary,
       $.string,
       $.tuple,
-      $.list,
-      $.keyword_list,
+      $._list_or_keyword_list,
+      $.map,
+      $.struct,
       $.module,
     ),
 
@@ -146,6 +147,12 @@ module.exports = grammar({
       '}',
     ),
 
+    _list_or_keyword_list: $ => choice(
+      $.list,
+      $.keyword_list,
+    ),
+
+
     list: $ => choice(
       $._empty_list,
       $._simple_list,
@@ -168,10 +175,7 @@ module.exports = grammar({
       ']',
     ),
     head: $ => $._expression,
-    tail: $ => choice(
-      $.list,
-      $.keyword_list,
-    ),
+    tail: $ => $._list_or_keyword_list,
 
     keyword_list: $ => seq(
       '[',
@@ -179,6 +183,18 @@ module.exports = grammar({
       repeat(seq(',', $.keyword)),
       optional(','),
       ']',
+    ),
+
+    map: $ => seq(
+      '%{',
+      '}',
+    ),
+    
+    struct: $ => seq(
+      '%',
+      $.alias,
+      '{',
+      '}',
     ),
 
     implicit_keyword_list: $ => prec.right(seq(

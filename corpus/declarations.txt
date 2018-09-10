@@ -106,3 +106,36 @@ end
     (module_attribute (string))
     (module_attribute (implicit_keyword_list (keyword (string))))
     (comment)))
+
+=======================
+empty struct definition
+=======================
+
+defmodule Name do
+  # defstruct []
+end
+
+---
+
+(program
+  (module (alias)
+    (comment)))
+
+=================
+struct definition
+=================
+
+defmodule Name do
+  # defstruct a: nil, b: 0, c: ""
+end
+defmodule Name do
+  # defstruct [:a, b: 0, c: ""]
+end
+
+---
+
+(program
+  (module (alias)
+    (comment))
+  (module (alias)
+    (comment)))
