@@ -18,10 +18,53 @@ module with attributes
 ======================
 
 defmodule Name do
-  @moduledoc "an apple a day, keeps the moduledoc away"
+  @after_compile
+  @before_compile
   @behaviour Good.Module
   @custom_attr [:hello, "world"]
   # TODO @custom_attr [hello: "world"]
+  # TODO @dialyzer {:nowarn_function, my_fun: 1}
+  @file "hello.ex"
+  @external_resource
+  @moduledoc "an apple a day, keeps the moduledoc away"
+  @on_load
+  @vsn "1.0"
+end
+
+---
+
+(program
+  (module (alias)
+    (module_attribute)
+    (module_attribute)
+    (module_attribute (alias))
+    (module_attribute (list (atom) (string)))
+    (comment)
+    (comment)
+    (module_attribute (string))
+    (module_attribute)
+    (module_attribute (string))
+    (module_attribute)
+    (module_attribute (string))))
+
+===============================
+module with function attributes
+===============================
+
+defmodule Name do
+  @deprecated "Use Module.bar/0 instead"
+  @doc "Hello world"
+  # TODO 
+  # @doc """
+  # Doesn't do much.
+  # """
+  # TODO @doc deprecated: "Use Module.bar/0 instead"
+  # TODO @doc since: "1.1.0"
+  @impl true
+  @impl Module
+  @on_definition
+  # def foo() do
+  # end
 end
 
 ---
@@ -29,6 +72,33 @@ end
 (program
   (module (alias)
     (module_attribute (string))
+    (module_attribute (string))
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (comment)
+    (module_attribute (true))
     (module_attribute (alias))
-    (module_attribute (list (atom) (string)))
+    (module_attribute)
+    (comment)
+    (comment)))
+
+===========================
+module with type attributes
+===========================
+
+defmodule Name do
+  @typedoc "This type"
+  # TODO @typedoc since: "1.1.0"
+  # TODO @type t :: term
+end
+
+---
+
+(program
+  (module (alias)
+    (module_attribute (string))
+    (comment)
     (comment)))

@@ -173,7 +173,7 @@ module.exports = grammar({
     
     module_attribute: $ => seq(
       /@\w+/,
-      $._value,
+      optional($._value),
     ),
 
     comment: $ => token(seq('#', /.*/)),
