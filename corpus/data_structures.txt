@@ -99,6 +99,7 @@ list in [ head | tail ] notation
 [[]|[]]
 [1|[:ok|[]]]
 [ 1 | [ 2 , 3 ] ]
+
 ---
 
 (program
@@ -117,3 +118,34 @@ list in [ head | tail ] notation
   (list
     (head (integer))
     (tail (list (integer) (integer)))))
+    
+==============================
+keyword list as list of tuples
+==============================
+
+[{:a, 1}, {:b, 2}]
+
+---
+
+(program
+  (list
+    (tuple (atom) (integer))
+    (tuple (atom) (integer))))
+
+============
+keyword list
+============
+
+[hello: "world"]
+[a: 1, b: 2]
+# TODO ["exit on close": true]
+
+---
+
+(program
+  (list
+    (keyword (string)))
+  (list
+    (keyword (integer))
+    (keyword (integer)))
+  (comment))

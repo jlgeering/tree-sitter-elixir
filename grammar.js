@@ -85,6 +85,12 @@ module.exports = grammar({
       ':~~~',
     ),
 
+    keyword: $ => seq(
+      // TODO refine
+      /\w+: /,
+      $._value
+    ),
+
     nil: $ => choice('nil',':nil'),
 
     charlist: $ => seq(
@@ -139,18 +145,25 @@ module.exports = grammar({
     ),
 
     list: $ => choice(
+      $._empty_list,
       $._simple_list,
+      $._keyword_list,
       $._head_tail_list,
     ),
+    _empty_list: $ => seq('[',']',),
     _simple_list: $ => seq(
       '[',
-      optional(
-        seq(
-          $._expression,
-          repeat(seq(',', $._expression)),
-          optional(','),
-        ),
-      ),
+      $._expression,
+      repeat(seq(',', $._expression)),
+      repeat(seq(',', $.keyword)),
+      optional(','),
+      ']',
+    ),
+    _keyword_list: $ => seq(
+      '[',
+      $.keyword,
+      repeat(seq(',', $.keyword)),
+      optional(','),
       ']',
     ),
     _head_tail_list: $ => seq(
