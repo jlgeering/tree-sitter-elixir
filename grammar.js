@@ -185,15 +185,39 @@ module.exports = grammar({
       ']',
     ),
 
-    map: $ => seq(
+    map: $ => choice(
+      $._empty_map,
+      $._map,
+    ),
+    _empty_map: $ => seq('%{','}'),
+    _map: $ => seq(
       '%{',
+      $.pair,
+      repeat(seq(',', $.pair)),
+      optional(','),
       '}',
+    ),
+
+    pair: $ => seq(
+      $._value,
+      '=>',
+      $._value,
     ),
     
     struct: $ => seq(
       '%',
       $.alias,
+      choice(
+        $._empty_struct_body,
+        $._struct_body,
+      ),
+    ),
+    _empty_struct_body: $ => seq('{','}'),
+    _struct_body: $ => seq(
       '{',
+      $.pair,
+      repeat(seq(',', $.pair)),
+      optional(','),
       '}',
     ),
 

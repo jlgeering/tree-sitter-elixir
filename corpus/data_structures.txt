@@ -202,12 +202,22 @@ empty map
 map
 ===
 
-# TODO
+%{:hello => :world}
+%{:hello=>:world,}
+%{:a => 1, 2 => :b}
+%{%{} => 1, [{nil}] => [a: :b]}
 
 ---
 
 (program
-  (comment))
+  (map (pair (atom) (atom)))
+  (map (pair (atom) (atom)))
+  (map
+    (pair (atom) (integer))
+    (pair (integer) (atom)))
+  (map
+    (pair (map) (integer))
+    (pair (list (tuple (nil))) (keyword_list (keyword (atom))))))
 
 ==========
 map update
@@ -246,11 +256,13 @@ empty struct
 struct
 ======
 
-# TODO
+%Name{:hello => :world}
+%Name{:hello=>:world,}
 
 ---
 
 (program
-  (comment))
+  (struct (alias) (pair (atom) (atom)))
+  (struct (alias) (pair (atom) (atom))))
 
 
