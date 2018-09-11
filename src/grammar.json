@@ -1088,12 +1088,25 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "module_attribute"
+            "name": "_module_body"
           }
         },
         {
           "type": "STRING",
           "value": "end"
+        }
+      ]
+    },
+    "_module_body": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "module_attribute"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "defstruct"
         }
       ]
     },
@@ -1122,6 +1135,28 @@
             },
             {
               "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "defstruct": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "defstruct"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "list"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "implicit_keyword_list"
             }
           ]
         }

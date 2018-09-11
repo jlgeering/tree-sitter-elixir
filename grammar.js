@@ -248,8 +248,13 @@ module.exports = grammar({
       'defmodule',
       $.alias,
       'do',
-      repeat($.module_attribute),
+      repeat($._module_body),
       'end',
+    ),
+    
+    _module_body: $ => choice(
+      $.module_attribute,
+      $.defstruct,
     ),
     
     module_attribute: $ => seq(
@@ -258,6 +263,14 @@ module.exports = grammar({
         $._value,
         $.implicit_keyword_list,
       )),
+    ),
+    
+    defstruct: $ => seq(
+      'defstruct',
+      choice(
+        $.list,
+        $.implicit_keyword_list,
+      ),
     ),
 
     comment: $ => token(seq('#', /.*/)),

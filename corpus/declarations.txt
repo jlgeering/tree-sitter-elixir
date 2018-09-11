@@ -112,30 +112,43 @@ empty struct definition
 =======================
 
 defmodule Name do
-  # defstruct []
+  defstruct []
 end
 
 ---
 
 (program
   (module (alias)
-    (comment)))
+    (defstruct (list))))
 
 =================
 struct definition
 =================
 
 defmodule Name do
-  # defstruct a: nil, b: 0, c: ""
+  defstruct hello: "world"
 end
 defmodule Name do
-  # defstruct [:a, b: 0, c: ""]
+  defstruct a: nil, b: 0, c: ""
+end
+defmodule Name do
+  defstruct [:a, b: 0, c: ""]
 end
 
 ---
 
 (program
   (module (alias)
-    (comment))
+    (defstruct (implicit_keyword_list
+      (keyword (string)))))
   (module (alias)
-    (comment)))
+    (defstruct (implicit_keyword_list
+      (keyword (nil))
+      (keyword (integer))
+      (keyword (string)))))
+  (module (alias)
+    (defstruct (list
+      (atom)
+      (implicit_keyword_list
+        (keyword (integer))
+        (keyword (string)))))))
