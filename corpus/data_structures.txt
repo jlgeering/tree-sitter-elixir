@@ -198,9 +198,9 @@ empty map
 
 (program (map) (map) (map))
 
-===
-map
-===
+=============
+map with pair
+=============
 
 %{:hello => :world}
 %{:hello=>:world,}
@@ -218,6 +218,40 @@ map
   (map
     (pair (map) (integer))
     (pair (list (tuple (nil))) (keyword_list (keyword (atom))))))
+
+================
+map with keyword
+================
+
+%{hello: :world}
+%{hello: :world , }
+%{a: 1, b: 2}
+%{a: 1, b: 2,}
+
+---
+
+(program
+  (map (keyword (atom)))
+  (map (keyword (atom)))
+  (map
+    (keyword (integer))
+    (keyword (integer)))
+  (map
+    (keyword (integer))
+    (keyword (integer))))
+
+==========================
+map with pair then keyword
+==========================
+
+# TODO review: not officially supported, but parser accepts this
+%{:a => 1, b: 2}
+
+---
+
+(program
+  (comment)
+  (map (pair (atom) (integer)) (keyword (integer))))
 
 ==========
 map update
@@ -252,9 +286,9 @@ empty struct
   (struct (alias))
   (struct (alias)))
 
-======
-struct
-======
+================
+struct with pair
+================
 
 %Name{:hello => :world}
 %Name{:hello=>:world,}
@@ -265,4 +299,37 @@ struct
   (struct (alias) (pair (atom) (atom)))
   (struct (alias) (pair (atom) (atom))))
 
+===================
+struct with keyword
+===================
+
+%Name{hello: :world}
+%Name{hello: :world , }
+%Name{a: 1, b: 2}
+%Name{a: 1, b: 2,}
+
+---
+
+(program
+  (struct (alias) (keyword (atom)))
+  (struct (alias) (keyword (atom)))
+  (struct (alias)
+    (keyword (integer))
+    (keyword (integer)))
+  (struct (alias)
+    (keyword (integer))
+    (keyword (integer))))
+
+=============================
+struct with pair then keyword
+=============================
+
+# TODO review: not officially supported, but parser accepts this
+%Name{:a => 1, b: 2}
+
+---
+
+(program
+  (comment)
+  (struct (alias) (pair (atom) (integer)) (keyword (integer))))
 
