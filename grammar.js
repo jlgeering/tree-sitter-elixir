@@ -24,7 +24,7 @@ module.exports = grammar({
       $.string,
       $.tuple,
       $._list_or_keyword_list,
-      $.map,
+      $._map,
       $.struct,
       $.defmodule,
     ),
@@ -185,25 +185,33 @@ module.exports = grammar({
       ']',
     ),
 
-    map: $ => choice(
-      $._empty_map,
-      $._map,
-      $._keyword_map,
+    _map: $ => choice(
+      $.map,
+      $.map_update,
     ),
-    _empty_map: $ => seq('%{','}'),
-    _map: $ => seq(
+
+    map: $ => seq(
       '%{',
-      $.pair,
-      repeat(seq(',', $.pair)),
-      repeat(seq(',', $.keyword)),
-      optional(','),
+      optional($._map_body),
       '}',
     ),
-    _keyword_map: $ => seq(
-      '%{',
-      $.keyword,
+    _map_body: $ => seq(
+      choice(
+        seq(
+          $.pair,
+          repeat(seq(',', $.pair)),
+        ),
+        $.keyword,
+      ),
       repeat(seq(',', $.keyword)),
       optional(','),
+    ),
+
+    map_update: $ => seq(
+      '%{',
+      $._value,
+      '|',
+      $._map_body,
       '}',
     ),
 

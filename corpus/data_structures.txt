@@ -257,11 +257,24 @@ map with pair then keyword
 map update
 ==========
 
-# TODO
+%{%{a: 1} | :a => 2}
+%{%{a: 1} | a: 2}
+%{%{a: 1} | :a => 0, a: 2, }
+# TODO %{map | a: 2}
 
 ---
 
 (program
+  (map_update
+   (map (keyword (integer)))
+   (pair (atom) (integer)))
+  (map_update
+   (map (keyword (integer)))
+   (keyword (integer)))
+  (map_update
+   (map (keyword (integer)))
+   (pair (atom) (integer))
+   (keyword (integer)))
   (comment))
 
 ============
