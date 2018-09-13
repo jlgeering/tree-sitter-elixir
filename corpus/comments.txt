@@ -22,3 +22,15 @@ comment
   (comment)
   (comment)
   (comment))
+
+===========
+eol comment
+===========
+
+1 # after a value
+
+---
+
+(program
+  (integer)
+  (comment))

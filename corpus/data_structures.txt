@@ -244,7 +244,7 @@ map with keyword
 map with pair then keyword
 ==========================
 
-# TODO review: not officially supported, but parser accepts this
+# TODO review: not documented, but parser accepts this
 %{:a => 1, b: 2}
 
 ---
@@ -337,7 +337,7 @@ struct with keyword
 struct with pair then keyword
 =============================
 
-# TODO review: not officially supported, but parser accepts this
+# TODO review: not documented, but parser accepts this
 %Name{:a => 1, b: 2}
 
 ---
