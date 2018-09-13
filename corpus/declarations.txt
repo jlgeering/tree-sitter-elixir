@@ -10,8 +10,8 @@ end
 ---
 
 (program
-  (module (alias))
-  (module (alias)))
+  (defmodule (alias))
+  (defmodule (alias)))
 
 ======================
 module with attributes
@@ -36,7 +36,7 @@ end
 ---
 
 (program
-  (module (alias)
+  (defmodule (alias)
     (module_attribute)
     (module_attribute)
     (module_attribute (alias))
@@ -74,7 +74,7 @@ end
 ---
 
 (program
-  (module (alias)
+  (defmodule (alias)
     (module_attribute (string))
     (module_attribute (string))
     (comment)
@@ -102,7 +102,7 @@ end
 ---
 
 (program
-  (module (alias)
+  (defmodule (alias)
     (module_attribute (string))
     (module_attribute (implicit_keyword_list (keyword (string))))
     (comment)))
@@ -118,7 +118,7 @@ end
 ---
 
 (program
-  (module (alias)
+  (defmodule (alias)
     (defstruct (list))))
 
 =================
@@ -138,15 +138,15 @@ end
 ---
 
 (program
-  (module (alias)
+  (defmodule (alias)
     (defstruct (implicit_keyword_list
       (keyword (string)))))
-  (module (alias)
+  (defmodule (alias)
     (defstruct (implicit_keyword_list
       (keyword (nil))
       (keyword (integer))
       (keyword (string)))))
-  (module (alias)
+  (defmodule (alias)
     (defstruct (list
       (atom)
       (implicit_keyword_list

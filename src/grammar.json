@@ -73,7 +73,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "module"
+          "name": "defmodule"
         }
       ]
     },
@@ -1069,7 +1069,7 @@
         ]
       }
     },
-    "module": {
+    "defmodule": {
       "type": "SEQ",
       "members": [
         {

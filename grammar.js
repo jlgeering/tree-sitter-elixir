@@ -26,7 +26,7 @@ module.exports = grammar({
       $._list_or_keyword_list,
       $.map,
       $.struct,
-      $.module,
+      $.defmodule,
     ),
 
     alias: $ => /[A-Z]\w*(\.[A-Z]\w*)*/,
@@ -244,7 +244,7 @@ module.exports = grammar({
       repeat(seq(',', $.keyword)),
     )),
 
-    module: $ => seq(
+    defmodule: $ => seq(
       'defmodule',
       $.alias,
       'do',
