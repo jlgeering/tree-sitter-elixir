@@ -1,6 +1,8 @@
 module.exports = grammar({
   name: 'elixir',
-
+  
+  word: $ => $.identifier,
+  
   extras: $ => [
     $.comment,
     /\s|\\\n/
@@ -280,6 +282,8 @@ module.exports = grammar({
         $.implicit_keyword_list,
       ),
     ),
+
+    identifier: $ => /[a-z_][a-zA-Z_]*/,
 
     comment: $ => token(seq('#', /.*/)),
   }

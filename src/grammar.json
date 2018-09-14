@@ -1,5 +1,6 @@
 {
   "name": "elixir",
+  "word": "identifier",
   "rules": {
     "program": {
       "type": "REPEAT",
@@ -1155,6 +1156,10 @@
           ]
         }
       ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-z_][a-zA-Z_]*"
     },
     "comment": {
       "type": "TOKEN",
