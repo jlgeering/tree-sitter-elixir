@@ -67,8 +67,9 @@ defmodule Name do
   @impl true
   @impl Module
   @on_definition
-  # def foo() do
-  # end
+  def foo() do
+    :ok
+  end
 end
 
 ---
@@ -86,8 +87,7 @@ end
     (module_attribute (true))
     (module_attribute (alias))
     (module_attribute)
-    (comment)
-    (comment)))
+    (def (identifier) (atom))))
 
 ===========================
 module with type attributes
@@ -152,3 +152,39 @@ end
       (implicit_keyword_list
         (keyword (integer))
         (keyword (string)))))))
+
+=====================
+function/0 with block
+=====================
+
+defmodule Public do
+  def f1 do :ok end
+  def f2 do
+    :ok
+  end
+  def f3() do :ok end
+  def f4 () do :ok end
+end
+
+defmodule Private do
+  defp f1 do :ok end
+  defp f2 do
+    :ok
+  end
+  defp f3() do :ok end
+  defp f4 () do :ok end
+end
+
+---
+
+(program
+  (defmodule (alias)
+    (def (identifier) (atom))
+    (def (identifier) (atom))
+    (def (identifier) (atom))
+    (def (identifier) (atom)))
+  (defmodule (alias)
+    (defp (identifier) (atom))
+    (defp (identifier) (atom))
+    (defp (identifier) (atom))
+    (defp (identifier) (atom))))

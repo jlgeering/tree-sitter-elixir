@@ -265,6 +265,8 @@ module.exports = grammar({
     _module_body: $ => choice(
       $.module_attribute,
       $.defstruct,
+      $.def,
+      $.defp,
     ),
     
     module_attribute: $ => seq(
@@ -282,8 +284,24 @@ module.exports = grammar({
         $.implicit_keyword_list,
       ),
     ),
+    
+    def: $ => seq(
+      'def',
+      $._function,
+    ),
+    defp: $ => seq(
+      'defp',
+      $._function,
+    ),
+    _function: $ => seq(
+      $.identifier,
+      optional('()'),
+      'do',
+      $._value,
+      'end',
+    ),
 
-    identifier: $ => /[a-z_][a-zA-Z_]*/,
+    identifier: $ => /[a-z_][a-zA-Z1-9_]*/,
 
     comment: $ => token(seq('#', /.*/)),
   }

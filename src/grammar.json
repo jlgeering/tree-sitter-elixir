@@ -1102,6 +1102,14 @@
         {
           "type": "SYMBOL",
           "name": "defstruct"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "def"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "defp"
         }
       ]
     },
@@ -1157,9 +1165,68 @@
         }
       ]
     },
+    "def": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "def"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_function"
+        }
+      ]
+    },
+    "defp": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "defp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_function"
+        }
+      ]
+    },
+    "_function": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "()"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "do"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_value"
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        }
+      ]
+    },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z_][a-zA-Z_]*"
+      "value": "[a-z_][a-zA-Z1-9_]*"
     },
     "comment": {
       "type": "TOKEN",
