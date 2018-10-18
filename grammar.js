@@ -1,3 +1,7 @@
+const PREC = {
+  STRING: 1,  // In a string, prefer string characters over comments
+};
+
 module.exports = grammar({
   name: 'elixir',
   
@@ -97,12 +101,6 @@ module.exports = grammar({
 
     nil: $ => choice('nil',':nil'),
 
-    charlist: $ => seq(
-      '\'',
-      repeat(/\\'|[^']/),
-      '\'',
-    ),
-
     binary: $ => seq(
       '<<',
       optional(
@@ -130,9 +128,15 @@ module.exports = grammar({
 
     binary_options: $ => /[-a-z0-9()]*/,
 
+    charlist: $ => seq(
+      '\'',
+      token(prec(PREC.STRING, /(\\'|[^'])*/)),
+      '\'',
+    ),
+
     string: $ => seq(
       '"',
-      repeat(/\\"|[^"]/),
+      token(prec(PREC.STRING, /(\\"|[^"])*/)),
       '"',
     ),
   

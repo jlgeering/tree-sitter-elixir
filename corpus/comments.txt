@@ -3,9 +3,6 @@ comment
 =======
 
 # anything else here should be ignored
-# even with # this is only 1 comment
-
-# "inside a commented out # string"
 
 # """
 # line 1
@@ -19,7 +16,31 @@ comment
   (comment)
   (comment)
   (comment)
-  (comment)
+  (comment))
+  
+===================================
+hashtag in a string (not a comment)
+===================================
+
+"# this is not a comment, it's just a string"
+'is this a charlist? # no comment!'
+
+---
+
+(program
+  (string)
+  (charlist))
+
+==============
+nested comment
+==============
+
+# even with # this is only 1 comment
+# "inside a commented out # string"
+
+---
+
+(program
   (comment)
   (comment))
 
@@ -28,9 +49,10 @@ eol comment
 ===========
 
 1 # after a value
+"this is a string" # followed by a comment
 
 ---
 
 (program
-  (integer)
-  (comment))
+  (integer) (comment)
+  (string) (comment))
