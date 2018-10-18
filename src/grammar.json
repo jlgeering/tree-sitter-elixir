@@ -328,26 +328,6 @@
         }
       ]
     },
-    "charlist": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "'"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "PATTERN",
-            "value": "\\\\'|[^']"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "'"
-        }
-      ]
-    },
     "binary": {
       "type": "SEQ",
       "members": [
@@ -453,6 +433,30 @@
       "type": "PATTERN",
       "value": "[-a-z0-9()]*"
     },
+    "charlist": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "PATTERN",
+              "value": "(\\\\'|[^'])*"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        }
+      ]
+    },
     "string": {
       "type": "SEQ",
       "members": [
@@ -461,10 +465,11 @@
           "value": "\""
         },
         {
-          "type": "REPEAT",
+          "type": "PREC",
+          "value": 1,
           "content": {
             "type": "PATTERN",
-            "value": "\\\\\"|[^\"]"
+            "value": "(\\\\\"|[^\"])*"
           }
         },
         {
