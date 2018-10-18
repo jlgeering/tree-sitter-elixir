@@ -130,13 +130,13 @@ module.exports = grammar({
 
     charlist: $ => seq(
       '\'',
-      prec(PREC.STRING, /(\\'|[^'])*/),
+      token(prec(PREC.STRING, /(\\'|[^'])*/)),
       '\'',
     ),
 
     string: $ => seq(
       '"',
-      prec(PREC.STRING, /(\\"|[^"])*/),
+      token(prec(PREC.STRING, /(\\"|[^"])*/)),
       '"',
     ),
   
