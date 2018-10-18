@@ -7,10 +7,13 @@
   "author": "Jean-Luc Geering <jeanluc.geering@ufirstgroup.com>",
   "license": "MIT",
   "devDependencies": {
-    "tree-sitter-cli": "^0.13.6"
+    "tree-sitter-cli": "^0.13.10"
   },
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "test": "tree-sitter test"
+  },
+  "dependencies": {
+    "nan": "^2.11.1"
   }
 }
