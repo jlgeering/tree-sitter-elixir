@@ -1,7 +1,12 @@
 ; highlights.scm
 
-"def" @keyword
-"defmodule" @keyword
-"defp" @keyword
-"do" @keyword
-"end" @keyword
+[
+  "def"
+  "defmodule"
+  "defp"
+  "do"
+  "end"
+] @keyword
+
+(integer) @number
+(string) @string
