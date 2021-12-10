@@ -5,6 +5,10 @@ tree-sitter-elixir
 
 Elixir grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
+## Setup
+
+`brew install tree-sitter`
+
 #### References
 
 * https://elixir-lang.org/getting-started/basic-types.html

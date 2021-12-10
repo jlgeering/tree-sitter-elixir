@@ -1256,6 +1256,9 @@
     }
   ],
   "conflicts": [],
+  "precedences": [],
   "externals": [],
-  "inline": []
+  "inline": [],
+  "supertypes": []
 }
+

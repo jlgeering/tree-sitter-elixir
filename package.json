@@ -2,18 +2,8 @@
   "name": "tree-sitter-elixir",
   "version": "0.0.1",
   "description": "Elixir grammar for tree-sitter",
-  "main": "index.js",
+  "main": "bindings/node",
   "repository": "git@github.com:jlgeering/tree-sitter-elixir.git",
   "author": "Jean-Luc Geering <jeanluc.geering@ufirstgroup.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "tree-sitter-cli": "^0.13.10"
-  },
-  "scripts": {
-    "build": "tree-sitter generate && node-gyp build",
-    "test": "tree-sitter test"
-  },
-  "dependencies": {
-    "nan": "^2.11.1"
-  }
+  "license": "MIT"
 }
