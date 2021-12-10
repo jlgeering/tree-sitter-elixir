@@ -1,2 +1,6 @@
-build
+Cargo.lock
 node_modules
+build
+*.log
+package-lock.json
+yarn.lock
