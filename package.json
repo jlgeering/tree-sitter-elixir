@@ -6,6 +6,15 @@
   "repository": "git@github.com:jlgeering/tree-sitter-elixir.git",
   "author": "Jean-Luc Geering <jeanluc.geering@ufirstgroup.com>",
   "license": "MIT",
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.1"
+  },
+  "scripts": {
+    "test": "tree-sitter test"
+  },
   "tree-sitter": [
     {
       "scope": "source.elixir",
