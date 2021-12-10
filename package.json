@@ -5,5 +5,14 @@
   "main": "bindings/node",
   "repository": "git@github.com:jlgeering/tree-sitter-elixir.git",
   "author": "Jean-Luc Geering <jeanluc.geering@ufirstgroup.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "tree-sitter": [
+    {
+      "scope": "source.elixir",
+      "file-types": [
+        "ex",
+        "exs"
+      ]
+    }
+  ]
 }
